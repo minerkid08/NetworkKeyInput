@@ -2,19 +2,10 @@
 #include <winsock2.h>
 
 #include <windows.h>
+#include <winuser.h>
+
 int main(int argc, const char** argv)
 {
-	/*INPUT inputs[2] = {};
-	ZeroMemory(inputs, sizeof(inputs));
-
-	inputs[0].type = INPUT_KEYBOARD;
-	inputs[0].ki.wVk = VK_LWIN;
-
-	inputs[1].type = INPUT_KEYBOARD;
-	inputs[1].ki.wVk = VK_LWIN;
-	inputs[1].ki.dwFlags = KEYEVENTF_KEYUP;
-
-	UINT uSent = SendInput(ARRAYSIZE(inputs), inputs, sizeof(INPUT));*/
 	SOCKET wsocket;
 	SOCKET newWsocket;
 	WSADATA data;
@@ -73,8 +64,16 @@ int main(int argc, const char** argv)
 			std::cout << "could not read request\n";
 			continue;
 		}
+		INPUT inputs[1] = {};
+		ZeroMemory(inputs, sizeof(inputs));
 
-		std::cout << buffer << '\n';
+		char keyCode = MapVirtualKey(buffer[0], 1);
+
+		inputs[0].type = INPUT_KEYBOARD;
+		inputs[0].ki.wVk = keyCode;
+		inputs[0].ki.dwFlags = (buffer[1] == 0 ? KEYEVENTF_KEYUP : 0);
+
+		UINT uSent = SendInput(1, inputs, sizeof(INPUT));
 	}
 	std::cout << "exit :(";
 	closesocket(newWsocket);
