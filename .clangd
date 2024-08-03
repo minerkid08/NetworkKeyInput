@@ -1,0 +1,2 @@
+CompileFlags:
+	Add: [-Iserver\src, -Iinclude, -Iclient\src, -std=c++20]

@@ -1,0 +1,56 @@
+{
+    "tasks": [
+        {
+            "args": [
+                "1",
+                "server\\src",
+                "-o",
+                "${workspaceFolder}\\bin\\server.exe",
+                "-I${workspaceFolder}\\server\\src",
+                "-lwsock32",
+                "-lWS2_32",
+                "-lUser32",
+                "-L${workspaceFolder}\\bin\\"
+            ],
+            "command": "D:/cppGames/Build.exe",
+            "group": {
+                "kind": "build"
+            },
+            "label": "server",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "type": "cppbuild"
+        },
+        {
+            "args": [
+                "1",
+                "client\\src",
+                "-o",
+                "${workspaceFolder}\\bin\\client.exe",
+                "-I${workspaceFolder}\\include",
+                "-I${workspaceFolder}\\client\\src",
+                "-lwsock32",
+                "-lWS2_32",
+                "-L${workspaceFolder}\\bin\\",
+                "-lglfw3"
+            ],
+            "command": "D:/cppGames/Build.exe",
+            "group": {
+                "kind": "build"
+            },
+            "label": "client",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "type": "cppbuild"
+        }
+    ],
+    "version": "2.0.0"
+}

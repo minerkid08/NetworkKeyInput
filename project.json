@@ -1,0 +1,24 @@
+{
+	"projects": [
+		{
+			"name": "server",
+			"build": [],
+			"include": [],
+			"type": "exe",
+			"out": "server.exe",
+			"dll": [],
+			"sdll": ["wsock32", "WS2_32", "User32"],
+			"configs": ["build", "run"]
+		},
+		{
+			"name": "client",
+			"build": [],
+			"include": ["include"],
+			"type": "exe",
+			"out": "client.exe",
+			"dll": ["glfw3"],
+			"sdll": ["wsock32", "WS2_32"],
+			"configs": ["build", "run"]
+		}
+	]
+}

@@ -1,0 +1,87 @@
+{
+    "configurations": [
+        {
+            "MIMode": "gdb",
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "name": "server: build",
+            "preLaunchTask": "server",
+            "program": "${workspaceFolder}/bin/server.exe",
+            "request": "launch",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "ignoreFailures": false,
+                    "text": "-enable-pretty-printing"
+                }
+            ],
+            "stopAtEntry": false,
+            "type": "cppdbg",
+            "windows": {
+                "miDebuggerPath": "C:/raylib/w64devkit\\bin\\gdb.exe"
+            }
+        },
+        {
+            "MIMode": "gdb",
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "name": "server: run",
+            "program": "${workspaceFolder}/bin/server.exe",
+            "request": "launch",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "ignoreFailures": false,
+                    "text": "-enable-pretty-printing"
+                }
+            ],
+            "stopAtEntry": false,
+            "type": "cppdbg",
+            "windows": {
+                "miDebuggerPath": "C:/raylib/w64devkit\\bin\\gdb.exe"
+            }
+        },
+        {
+            "MIMode": "gdb",
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "name": "client: build",
+            "preLaunchTask": "client",
+            "program": "${workspaceFolder}/bin/client.exe",
+            "request": "launch",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "ignoreFailures": false,
+                    "text": "-enable-pretty-printing"
+                }
+            ],
+            "stopAtEntry": false,
+            "type": "cppdbg",
+            "windows": {
+                "miDebuggerPath": "C:/raylib/w64devkit\\bin\\gdb.exe"
+            }
+        },
+        {
+            "MIMode": "gdb",
+            "cwd": "${workspaceFolder}",
+            "externalConsole": false,
+            "name": "client: run",
+            "program": "${workspaceFolder}/bin/client.exe",
+            "request": "launch",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "ignoreFailures": false,
+                    "text": "-enable-pretty-printing"
+                }
+            ],
+            "stopAtEntry": false,
+            "type": "cppdbg",
+            "windows": {
+                "miDebuggerPath": "C:/raylib/w64devkit\\bin\\gdb.exe"
+            }
+        }
+    ],
+    "version": "0.2.0"
+}
