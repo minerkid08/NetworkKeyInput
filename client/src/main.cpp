@@ -12,17 +12,20 @@ SOCKET ConnectSocket;
 
 void keypress(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-	char buf[3];
-	buf[0] = key;
-	buf[1] = (action == GLFW_PRESS);
-	buf[2] = 0;
-	int iResult = send(ConnectSocket, buf, 3, 0);
-	if (iResult == SOCKET_ERROR)
+	if (action == GLFW_PRESS || action == GLFW_RELEASE)
 	{
-		printf("send failed with error: %d\n", WSAGetLastError());
-		closesocket(ConnectSocket);
-		WSACleanup();
-		exit(1);
+		char buf[3];
+		buf[0] = scancode;
+		buf[1] = (action == GLFW_PRESS);
+		buf[2] = 0;
+		int iResult = send(ConnectSocket, buf, 3, 0);
+		if (iResult == SOCKET_ERROR)
+		{
+			printf("send failed with error: %d\n", WSAGetLastError());
+			closesocket(ConnectSocket);
+			WSACleanup();
+			exit(1);
+		}
 	}
 }
 
@@ -52,7 +55,7 @@ int main(int argc, char** argv)
 	hints.ai_protocol = IPPROTO_TCP;
 
 	// Resolve the server address and port
-	iResult = getaddrinfo("127.0.0.1", DEFAULT_PORT, &hints, &result);
+	iResult = getaddrinfo(argv[1], DEFAULT_PORT, &hints, &result);
 	if (iResult != 0)
 	{
 		printf("getaddrinfo failed with error: %d\n", iResult);
@@ -99,8 +102,8 @@ int main(int argc, char** argv)
 
 	while (!glfwWindowShouldClose(window))
 	{
-    glfwPollEvents();
-    glfwSwapBuffers(window);
+		glfwPollEvents();
+		glfwSwapBuffers(window);
 	}
 
 	// shutdown the connection since no more data will be sent
